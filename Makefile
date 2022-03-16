@@ -13,14 +13,21 @@ RM    = rm -f
 
 SRC    = main.c								\
 		print_tetrimino.c					\
-		my_read.c							\
-		my_memset.c 						\
+		help.c								\
+		parse_flags.c 						\
+		print_debug.c						\
+		utils/my_read.c						\
+		utils/my_memset.c 					\
+		utils/my_strcpy.c					\
+		utils/my_strdup.c					\
+		utils/my_atoi.c						\
+		utils/my_itoa.c						\
 
 OBJ    = $(SRC:.c=.o)
 
-CFLAGS += -Wall -pedantic -I./include -g3
+CFLAGS += -pedantic -I./include -g3
 
-LIBFLAG    = -L ./lib/my/ -lmy -I ./include -g3
+LIBFLAG    = -L ./lib/my/ -lmy -I ./include -g3 -lncurses
 all: $(NAME)
 
 $(NAME): $(OBJ)
