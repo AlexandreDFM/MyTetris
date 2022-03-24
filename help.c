@@ -27,5 +27,4 @@ void help(void)
     "(def: 20,10)\n"
     "  -w --without-next Hide next tetrimino (def: false)\n"
     "  -D --debug Debug mode (def: false)\n");
-    exit (0);
 }

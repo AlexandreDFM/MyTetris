@@ -36,12 +36,14 @@ void get_size(char *str, tetris_t *tetris)
     int i = 0, j = 0;
     str += 11;
     for (; str[i] != ','; i++, j++);
-    tetris->row = malloc(sizeof(char) * j);
+    tetris->row = malloc(sizeof(char) * (j + 1));
     tetris->row = my_strncpy(tetris->row, str, j);
+    tetris->row[my_strlen(tetris->row)] = '\0';
     str += j + 1;
-    for (j = 0; str[i] != '}'; i++, j++);
-    tetris->col = malloc(sizeof(char) * j);
+    for (j = 0; str[i] != '\0'; i++, j++);
+    tetris->col = malloc(sizeof(char) * (j + 1));
     tetris->col = my_strncpy(tetris->col, str, j);
+    tetris->col[my_strlen(tetris->col)] = '\0';
 }
 
 void parse_flags2(char **av, int i, tetris_t *tetris)
@@ -50,6 +52,8 @@ void parse_flags2(char **av, int i, tetris_t *tetris)
         10) == 0) tetris->key_p = retrieve_int(av[i], av[i + 1]);
     if (my_strncmp(av[i], "--map-size=", 10) == 0)
         get_size(av[i], tetris);
+    if (my_strncmp(av[i], "--help", 7) == 0)
+        help();
 }
 
 int get_level(char *str, char *str2)

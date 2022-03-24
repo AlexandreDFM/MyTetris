@@ -24,7 +24,7 @@ int print2(struct dirent *entry, char *name, tetris_t *tetris_s, char *tetris)
     name[i] = '\0';
     if (my_strncmp(my_revstr(entry->d_name), "onimirtet.", 11) != 0 || check_valid(tetris) == -1) {
         if (tetris_s->debug == 1)
-            my_printf("Tetriminos %s : error\n", name);
+            my_printf("Tetriminos '%s': error\n", name);
     } else {
         if (tetris_s->debug == 1)
             my_printf("Tetriminos '%s': size %c*%c, color %c", name, tetris[0], tetris[2], tetris[4]);
@@ -73,6 +73,6 @@ void count_tetrimino(tetris_t *tetris)
     tetris->tetriminos = malloc(sizeof(char *) * file_count);
     closedir(dirp);
     if (tetris->debug == 1)
-        my_printf("Number of tetriminos :  %d\n", file_count);
+        my_printf("Number of tetriminos: %d\n", file_count);
     print_tetrimino(tetris);
 }
