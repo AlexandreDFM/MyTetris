@@ -48,5 +48,6 @@ int my_atoi(char const *str);
 void print_debug(tetris_t *tetris);
 char *get_lines(char const *filepath);
 void count_tetrimino(tetris_t *tetris);
+int is_present(char **array, char *str, int check);
 void *my_memset(void *dest, int value, int length);
 void parse_flags(int ac, char **av, tetris_t *tetris, int i);

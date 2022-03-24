@@ -22,12 +22,14 @@ int print2(struct dirent *entry, char *name, tetris_t *tetris_s, char *tetris)
         name[i] = entry->d_name[i];
     }
     name[i] = '\0';
-    if (my_strncmp(my_revstr(entry->d_name), "onimirtet.", 11) != 0 || check_valid(tetris) == -1) {
+    if (my_strncmp(my_revstr(entry->d_name), "onimirtet.", 11) != 0 ||
+    check_valid(tetris) == -1) {
         if (tetris_s->debug == 1)
             my_printf("Tetriminos '%s': error\n", name);
     } else {
         if (tetris_s->debug == 1)
-            my_printf("Tetriminos '%s': size %c*%c, color %c", name, tetris[0], tetris[2], tetris[4]);
+            my_printf("Tetriminos '%s': size %c*%c, color %c", name, tetris[0],
+            tetris[2], tetris[4]);
         tetris += 5;
         tetris_s->tetriminos[tetris_s->t_nb] = my_strdup(tetris);
         if (tetris_s->debug == 1)

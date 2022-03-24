@@ -22,6 +22,7 @@ SRC    = main.c								\
 		utils/my_strdup.c					\
 		utils/my_atoi.c						\
 		utils/my_itoa.c						\
+		utils/is_present.c					\
 
 OBJ    = $(SRC:.c=.o)
 
