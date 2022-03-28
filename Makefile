@@ -12,17 +12,19 @@ CC    = gcc
 RM    = rm -f
 
 SRC    = main.c								\
-		print_tetrimino.c					\
-		help.c								\
-		parse_flags.c 						\
-		print_debug.c						\
-		utils/my_read.c						\
-		utils/my_memset.c 					\
-		utils/my_strcpy.c					\
-		utils/my_strdup.c					\
-		utils/my_atoi.c						\
-		utils/my_itoa.c						\
-		utils/is_present.c					\
+		src/tetris.c						\
+		src/print_tetrimino.c				\
+		src/help.c							\
+		src/parse_flags.c 					\
+		src/print_debug.c					\
+		src/utils/my_read.c					\
+		src/utils/my_memset.c 				\
+		src/utils/my_strcpy.c				\
+		src/utils/my_strdup.c				\
+		src/utils/my_atoi.c					\
+		src/utils/my_itoa.c					\
+		src/utils/my_strtwa.c				\
+		src/utils/is_present.c				\
 
 OBJ    = $(SRC:.c=.o)
 

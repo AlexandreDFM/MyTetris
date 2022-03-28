@@ -42,6 +42,13 @@ typedef struct tetris {
     int *key_nb;
 }tetris_t;
 
+typedef struct tetris_g {
+    int width;
+    int height;
+    char **interface;
+}tetris_g_t;
+
+
 char *my_itoa(int num);
 char *my_strdup(char *src);
 int my_atoi(char const *str);

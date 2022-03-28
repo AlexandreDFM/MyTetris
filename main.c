@@ -41,17 +41,21 @@ void check_flags(int ac, char **av, char **s_flags, char **l_flags)
 
 void main(int ac, char **av)
 {
-    int key = 0;
-    tetris_t tetris;
-    static char *s_flags[9] = {"-L", "-l", "-r", "-t", "-d", "-q", "-p", "-w",
-    "-D"};
-    static char *l_flags[11] = {"--help", "--level=", "--key-left=",
-    "--key-right=", "--key-turn=", "--key-drop=", "--key-quit=",
-    "--key-pause=", "--map-size=", "--without-next", "--debug"};
-    check_flags(ac, av, s_flags, l_flags);
-    init(&tetris);
-    parse_flags(ac, av, &tetris, 1);
-    if (tetris.debug == 1)
-        print_debug(&tetris);
-    count_tetrimino(&tetris);
+    if (ac == 1) {
+        tetris();
+    } else if (ac >= 2) {
+        int key = 0;
+        tetris_t tetris;
+        static char *s_flags[9] = {"-L", "-l", "-r", "-t", "-d", "-q", "-p", "-w",
+        "-D"};
+        static char *l_flags[11] = {"--help", "--level=", "--key-left=",
+        "--key-right=", "--key-turn=", "--key-drop=", "--key-quit=",
+        "--key-pause=", "--map-size=", "--without-next", "--debug"};
+        check_flags(ac, av, s_flags, l_flags);
+        init(&tetris);
+        parse_flags(ac, av, &tetris, 1);
+        if (tetris.debug == 1)
+            print_debug(&tetris);
+        count_tetrimino(&tetris);
+    }
 }
