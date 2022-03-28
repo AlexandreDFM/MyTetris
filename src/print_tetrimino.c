@@ -15,10 +15,25 @@ int check_valid(char *tetris)
     return 0;
 }
 
+char *trim_spaces(char *tetris)
+{
+    int i = 0;
+    for (; tetris[i] != '\0'; i++) {
+        if (tetris[i] == ' ' && tetris[i + 1] == '\n') {
+            for (int j = i; tetris[j + 1] != '\0'; j++)
+               tetris[j] = tetris[j + 1];
+        }
+    }
+    tetris[i] = '\0';
+    for (int j = i; j != 0; j--) {
+        if (tetris[j] == '\n' && tetris[j - 1] == '\n') tetris[j] = '\0';
+    }
+}
+
 int print2(struct dirent *entry, char *name, tetris_t *tetris_s, char *tetris)
 {
     int i = 0;
-    for (i = 0; entry->d_name[i] != '.'; i++) {
+    for (; entry->d_name[i] != '.'; i++) {
         name[i] = entry->d_name[i];
     }
     name[i] = '\0';
@@ -31,6 +46,7 @@ int print2(struct dirent *entry, char *name, tetris_t *tetris_s, char *tetris)
             my_printf("Tetriminos '%s': size %c*%c, color %c", name, tetris[0],
             tetris[2], tetris[4]);
         tetris += 5;
+        trim_spaces(tetris);
         tetris_s->tetriminos[tetris_s->t_nb] = my_strdup(tetris);
         if (tetris_s->debug == 1)
             my_printf("%s", tetris_s->tetriminos[tetris_s->t_nb]);
