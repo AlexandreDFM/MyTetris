@@ -70,6 +70,7 @@ void print_tetrimino(tetris_t *tetris_s)
             tetris = get_lines(path);
             print2(entry, name, tetris_s, tetris);
             my_memset(path, 0, my_strlen(path));
+            count++;
         }
     }
     tetris_s->t_nb = count;

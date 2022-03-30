@@ -108,5 +108,5 @@ void tetris()
     curs_set(0);
     game(&tetris_g, tetris);
     endwin();
-    free(tetris);
+    //free(tetris);
 }
