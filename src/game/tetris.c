@@ -7,6 +7,11 @@
 
 #include "tetris.h"
 
+void print_interfaces()
+{
+    
+}
+
 void game(tetris_g_t *tetris_g, WINDOW *tetris)
 {
     int input = 0;
@@ -17,80 +22,61 @@ void game(tetris_g_t *tetris_g, WINDOW *tetris)
                 switch (tetris_g->interface[y][x]) {
                 case '1':
                     attron(COLOR_PAIR(1));
-                    mvwprintw(tetris, LINES / 2 - tetris_g->height / 2 + y,
-                    COLS / 2 - tetris_g->width / 2 + x, "%c", ' ');
+                    mvwprintw(tetris, LINES / 2 - tetris_g->height / 2 + y, COLS / 2 - tetris_g->width / 2 + x, "%c", ' ');
                     attroff(COLOR_PAIR(1));
                     break;
                 case '2':
                     attron(COLOR_PAIR(2));
-                    mvwprintw(tetris, LINES / 2 - tetris_g->height / 2 + y,
-                    COLS / 2 - tetris_g->width / 2 + x, "%c", ' ');
+                    mvwprintw(tetris, LINES / 2 - tetris_g->height / 2 + y, COLS / 2 - tetris_g->width / 2 + x, "%c", ' ');
                     attroff(COLOR_PAIR(2));
                     break;
                 case '3':
                     attron(COLOR_PAIR(3));
-                    mvwprintw(tetris, LINES / 2 - tetris_g->height / 2 + y,
-                    COLS / 2 - tetris_g->width / 2 + x, "%c", ' ');
+                    mvwprintw(tetris, LINES / 2 - tetris_g->height / 2 + y, COLS / 2 - tetris_g->width / 2 + x, "%c", ' ');
                     attroff(COLOR_PAIR(3));
                     break;
                 case '4':
                     attron(COLOR_PAIR(4));
-                    mvwprintw(tetris, LINES / 2 - tetris_g->height / 2 + y,
-                    COLS / 2 - tetris_g->width / 2 + x, "%c", ' ');
+                    mvwprintw(tetris, LINES / 2 - tetris_g->height / 2 + y, COLS / 2 - tetris_g->width / 2 + x, "%c", ' ');
                     attroff(COLOR_PAIR(4));
                     break;
                 case '5':
                     attron(COLOR_PAIR(5));
-                    mvwprintw(tetris, LINES / 2 - tetris_g->height / 2 + y,
-                    COLS / 2 - tetris_g->width / 2 + x, "%c", ' ');
+                    mvwprintw(tetris, LINES / 2 - tetris_g->height / 2 + y, COLS / 2 - tetris_g->width / 2 + x, "%c", ' ');
                     attroff(COLOR_PAIR(5));
                     break;
                 case '6':
                     attron(COLOR_PAIR(6));
-                    mvwprintw(tetris, LINES / 2 - tetris_g->height / 2 + y,
-                    COLS / 2 - tetris_g->width / 2 + x, "%c", ' ');
+                    mvwprintw(tetris, LINES / 2 - tetris_g->height / 2 + y, COLS / 2 - tetris_g->width / 2 + x, "%c", ' ');
                     attroff(COLOR_PAIR(6));
                     break;
                 case '7':
                     attron(COLOR_PAIR(7));
-                    mvwprintw(tetris, LINES / 2 - tetris_g->height / 2 + y,
-                    COLS / 2 - tetris_g->width / 2 + x, "%c", ' ');
+                    mvwprintw(tetris, LINES / 2 - tetris_g->height / 2 + y, COLS / 2 - tetris_g->width / 2 + x, "%c", ' ');
                     attroff(COLOR_PAIR(7));
                     break;
                 default:
-                    mvwprintw(tetris, LINES / 2 - tetris_g->height / 2 + y,
-                    COLS / 2 - tetris_g->width / 2 + x, "%c",
-                    tetris_g->interface[y][x]);
+                    mvwprintw(tetris, LINES / 2 - tetris_g->height / 2 + y, COLS / 2 - tetris_g->width / 2 + x, "%c", tetris_g->interface[y][x]);
                     break;
                 }
             }
             printw("\n");
         }
-        mvwprintw(tetris, LINES / 2 - tetris_g->height / 2 + 10, COLS / 2 -
-        tetris_g->width / 2 + 21, "%d", tetris_g->highscore);
-        mvwprintw(tetris, LINES / 2 - tetris_g->height / 2 + 11, COLS / 2 -
-        tetris_g->width / 2 + 21, "%d", tetris_g->score);
-        mvwprintw(tetris, LINES / 2 - tetris_g->height / 2 + 13, COLS / 2 -
-        tetris_g->width / 2 + 21, "%d", tetris_g->lines);
-        mvwprintw(tetris, LINES / 2 - tetris_g->height / 2 + 14, COLS / 2 -
-        tetris_g->width / 2 + 21, "%d", tetris_g->level);
+        mvwprintw(tetris, LINES / 2 - tetris_g->height / 2 + 10, COLS / 2 - tetris_g->width / 2 + 21, "%d", tetris_g->highscore);
+        mvwprintw(tetris, LINES / 2 - tetris_g->height / 2 + 11, COLS / 2 - tetris_g->width / 2 + 21, "%d", tetris_g->score);
+        mvwprintw(tetris, LINES / 2 - tetris_g->height / 2 + 13, COLS / 2 - tetris_g->width / 2 + 21, "%d", tetris_g->lines);
+        mvwprintw(tetris, LINES / 2 - tetris_g->height / 2 + 14, COLS / 2 - tetris_g->width / 2 + 21, "%d", tetris_g->level);
         if (tetris_g->timermins < 10) {
-            mvwprintw(tetris, LINES / 2 - tetris_g->height / 2 + 19, COLS / 2
-            - tetris_g->width / 2 + 17, "0");
-            mvwprintw(tetris, LINES / 2 - tetris_g->height / 2 + 19, COLS / 2
-            - tetris_g->width / 2 + 18, "%d:", tetris_g->timermins);
+            mvwprintw(tetris, LINES / 2 - tetris_g->height / 2 + 19, COLS / 2 - tetris_g->width / 2 + 17, "0");
+            mvwprintw(tetris, LINES / 2 - tetris_g->height / 2 + 19, COLS / 2 - tetris_g->width / 2 + 18, "%d:", tetris_g->timermins);
         } else {
-            mvwprintw(tetris, LINES / 2 - tetris_g->height / 2 + 19, COLS / 2
-            - tetris_g->width / 2 + 17, "%d:", tetris_g->timermins);
+            mvwprintw(tetris, LINES / 2 - tetris_g->height / 2 + 19, COLS / 2 - tetris_g->width / 2 + 17, "%d:", tetris_g->timermins);
         }
         if (tetris_g->timersecondes < 10) {
-            mvwprintw(tetris, LINES / 2 - tetris_g->height / 2 + 19, COLS / 2
-            - tetris_g->width / 2 + 20, "0");
-            mvwprintw(tetris, LINES / 2 - tetris_g->height / 2 + 19, COLS / 2
-            - tetris_g->width / 2 + 21, "%d", tetris_g->timersecondes);
+            mvwprintw(tetris, LINES / 2 - tetris_g->height / 2 + 19, COLS / 2 - tetris_g->width / 2 + 20, "0");
+            mvwprintw(tetris, LINES / 2 - tetris_g->height / 2 + 19, COLS / 2 - tetris_g->width / 2 + 21, "%d", tetris_g->timersecondes);
         } else {
-            mvwprintw(tetris, LINES / 2 - tetris_g->height / 2 + 19, COLS / 2
-            - tetris_g->width / 2 + 20, "%d", tetris_g->timersecondes);
+            mvwprintw(tetris, LINES / 2 - tetris_g->height / 2 + 19, COLS / 2 - tetris_g->width / 2 + 20, "%d", tetris_g->timersecondes);
         }
         refresh();
         input = wgetch(tetris);
