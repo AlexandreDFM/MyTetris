@@ -41,9 +41,6 @@ void check_flags(int ac, char **av, char **s_flags, char **l_flags)
 
 void main(int ac, char **av)
 {
-    if (ac == 1) {
-        tetris();
-    } else if (ac >= 2) {
         int key = 0;
         tetris_t tetris;
         static char *s_flags[9] = {"-L", "-l", "-r", "-t", "-d", "-q", "-p", "-w",
@@ -54,8 +51,9 @@ void main(int ac, char **av)
         check_flags(ac, av, s_flags, l_flags);
         init(&tetris);
         parse_flags(ac, av, &tetris, 1);
-        if (tetris.debug == 1)
+        if (tetris.debug)
             print_debug(&tetris);
         count_tetrimino(&tetris);
-    }
+        if (!tetris.debug)
+            init_tetris();
 }

@@ -39,6 +39,7 @@ int print2(struct dirent *entry, char *name, tetris_t *tetris_s, char *tetris)
     name[i] = '\0';
     if (my_strncmp(my_revstr(entry->d_name), "onimirtet.", 11) != 0 ||
     check_valid(tetris) == -1) {
+        tetris_s->t_nb -= 1;
         if (tetris_s->debug == 1)
             my_printf("Tetriminos '%s': error\n", name);
     } else {
@@ -50,7 +51,6 @@ int print2(struct dirent *entry, char *name, tetris_t *tetris_s, char *tetris)
         tetris_s->tetriminos[tetris_s->t_nb] = my_strdup(tetris);
         if (tetris_s->debug == 1)
             my_printf("%s", tetris_s->tetriminos[tetris_s->t_nb]);
-        tetris_s->t_nb++;
     }
 }
 
@@ -73,7 +73,6 @@ void print_tetrimino(tetris_t *tetris_s)
             count++;
         }
     }
-    tetris_s->t_nb = count;
     closedir(dirp);
 }
 
@@ -89,6 +88,7 @@ void count_tetrimino(tetris_t *tetris)
             file_count++;
         }
     }
+    tetris->t_nb = file_count;
     tetris->tetriminos = malloc(sizeof(char *) * file_count);
     closedir(dirp);
     if (tetris->debug == 1)
