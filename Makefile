@@ -12,11 +12,11 @@ CC    = gcc
 RM    = rm -f
 
 SRC    = main.c								\
-		src/tetris.c						\
 		src/print_tetrimino.c				\
 		src/help.c							\
 		src/parse_flags.c 					\
 		src/print_debug.c					\
+		src/game/tetris.c					\
 		src/utils/my_read.c					\
 		src/utils/my_memset.c 				\
 		src/utils/my_strcpy.c				\

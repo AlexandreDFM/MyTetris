@@ -42,12 +42,24 @@ typedef struct tetris {
     int *key_nb;
 }tetris_t;
 
+typedef struct tetriminos {
+    char **piece;
+    struct tetriminos *prev;
+    struct tetriminos *next;
+}tetriminos_t;
+
 typedef struct tetris_g {
     int width;
     int height;
+    int highscore;
+    int score;
+    int lines;
+    int level;
+    int timermins;
+    int timersecondes;
     char **interface;
+    tetriminos_t *tetriminos;
 }tetris_g_t;
-
 
 char *my_itoa(int num);
 char *my_strdup(char *src);
