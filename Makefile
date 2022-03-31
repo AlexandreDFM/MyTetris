@@ -17,6 +17,8 @@ SRC    = main.c								\
 		src/parse_flags.c 					\
 		src/print_debug.c					\
 		src/game/tetris.c					\
+		src/game/create_grid.c				\
+		src/game/nodes_tetriminos.c			\
 		src/utils/my_read.c					\
 		src/utils/my_memset.c 				\
 		src/utils/my_strcpy.c				\

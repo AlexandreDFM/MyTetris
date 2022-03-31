@@ -2,6 +2,15 @@
     "C_Cpp.errorSquiggles": "Enabled",
     "files.associations": {
         "*.c": "c",
+        "array": "c",
+        "deque": "c",
+        "string": "c",
+        "unordered_map": "c",
+        "vector": "c",
+        "string_view": "c",
+        "initializer_list": "c",
+        "utility": "c",
+        "random": "c"
     },
     "editor.bracketPairColorization.enabled": true,
     "editor.guides.bracketPairs":"active"

@@ -26,6 +26,7 @@
 
 typedef struct tetris {
     char **tetriminos;
+    char *color;
     int t_nb;
     int level;
     char *key_l;
@@ -40,10 +41,23 @@ typedef struct tetris {
     int debug;
     char **keys;
     int *key_nb;
+    int total;
 }tetris_t;
 
+typedef struct coordtetri {
+    char symbol;
+    int x;
+    int y;
+    struct coordtetri *prev;
+    struct coordtetri *next;
+}coordtetri_t;
+
 typedef struct tetriminos {
-    char **piece;
+    int sizepiece;
+    char *piece;
+    char **tabpiece;
+    char color;
+    coordtetri_t *tetrimino;
     struct tetriminos *prev;
     struct tetriminos *next;
 }tetriminos_t;
@@ -57,8 +71,16 @@ typedef struct tetris_g {
     int level;
     int timermins;
     int timersecondes;
-    char **interface;
+    int nb_tetri;
+    int xactual_tetri;
+    int yactual_tetri;
+    char **interfaceleft;
+    char **grid;
+    char **interfaceright;
+    clock_t begin;
+    clock_t end;
     tetriminos_t *tetriminos;
+    tetriminos_t *actual_tetri;
 }tetris_g_t;
 
 char *my_itoa(int num);
@@ -70,3 +92,7 @@ void count_tetrimino(tetris_t *tetris);
 int is_present(char **array, char *str, int check);
 void *my_memset(void *dest, int value, int length);
 void parse_flags(int ac, char **av, tetris_t *tetris, int i);
+char **create_next_grid(int width, int height);
+char **fill_next_grid(char **grid, int width, int height);
+char **create_grid(int width, int height);
+char **fill_grid(char **grid, int width, int height);

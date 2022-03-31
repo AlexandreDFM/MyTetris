@@ -39,18 +39,20 @@ int print2(struct dirent *entry, char *name, tetris_t *tetris_s, char *tetris)
     name[i] = '\0';
     if (my_strncmp(my_revstr(entry->d_name), "onimirtet.", 11) != 0 ||
     check_valid(tetris) == -1) {
-        tetris_s->t_nb -= 1;
+        tetris_s->total -= 1;
         if (tetris_s->debug == 1)
             my_printf("Tetriminos '%s': error\n", name);
     } else {
         if (tetris_s->debug == 1)
             my_printf("Tetriminos '%s': size %c*%c, color %c", name, tetris[0],
             tetris[2], tetris[4]);
+        tetris_s->color[tetris_s->t_nb] = tetris[4];
         tetris += 5;
         trim_spaces(tetris);
         tetris_s->tetriminos[tetris_s->t_nb] = my_strdup(tetris);
         if (tetris_s->debug == 1)
             my_printf("%s", tetris_s->tetriminos[tetris_s->t_nb]);
+        tetris_s->t_nb++;
     }
 }
 
@@ -70,9 +72,9 @@ void print_tetrimino(tetris_t *tetris_s)
             tetris = get_lines(path);
             print2(entry, name, tetris_s, tetris);
             my_memset(path, 0, my_strlen(path));
-            count++;
         }
     }
+    tetris_s->t_nb = count;
     closedir(dirp);
 }
 
@@ -81,15 +83,16 @@ void count_tetrimino(tetris_t *tetris)
     int file_count = 0;
     DIR * dirp;
     struct dirent *entry;
-    tetris->t_nb = 0;
+    tetris->t_nb = 0, tetris->total = 0;
     dirp = opendir("tetriminos/");
     while ((entry = readdir(dirp)) != NULL) {
         if (entry->d_type == DT_REG) {
             file_count++;
         }
     }
-    tetris->t_nb = file_count;
+    tetris->total = file_count;
     tetris->tetriminos = malloc(sizeof(char *) * file_count);
+    tetris->color = malloc(sizeof(char) * file_count);
     closedir(dirp);
     if (tetris->debug == 1)
         my_printf("Number of tetriminos: %d\n", file_count);
