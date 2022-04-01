@@ -56,7 +56,7 @@ void main(int ac, char **av)
     if (tetris.debug)
         print_debug(&tetris);
     count_tetrimino(&tetris);
-    my_printf("%d\n", tetris.total);
+    if (tetris.total == 0) exit(84);
     if (!tetris.debug)
         init_tetris(&tetris);
 }

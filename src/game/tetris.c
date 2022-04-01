@@ -220,8 +220,7 @@ void game(WINDOW *tetris, tetris_g_t *tetris_g)
             if (tetris_g->actual_tetri != NULL) print_tetriminos(tetris, tetris_g);
         }
         input = wgetch(tetris);
-        if (input == 27) break;
-        if (input == 101) rotate_tetri(tetris, tetris_g);
+        if (inputs_manager(tetris, tetris_g, input) == 84) return 84;
     }
 }
 

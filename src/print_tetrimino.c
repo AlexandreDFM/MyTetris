@@ -85,6 +85,7 @@ void count_tetrimino(tetris_t *tetris)
     struct dirent *entry;
     tetris->t_nb = 0, tetris->total = 0;
     dirp = opendir("tetriminos/");
+    if (!dirp) exit (84);
     while ((entry = readdir(dirp)) != NULL) {
         if (entry->d_type == DT_REG) {
             file_count++;

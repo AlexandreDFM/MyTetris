@@ -10,7 +10,8 @@
         "string_view": "c",
         "initializer_list": "c",
         "utility": "c",
-        "random": "c"
+        "random": "c",
+        "tetris.h": "c"
     },
     "editor.bracketPairColorization.enabled": true,
     "editor.guides.bracketPairs":"active"

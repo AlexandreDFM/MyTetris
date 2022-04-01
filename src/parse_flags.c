@@ -9,6 +9,7 @@
 
 char *retrieve_int(char *str, char *str2)
 {
+    if (!str2 && my_strlen(str) == 2) exit(84);
     char *tmp, *tmp2 = malloc(2);
     int i = 0, j = 0;
     if (my_strlen(str) == 2) {
@@ -20,6 +21,7 @@ char *retrieve_int(char *str, char *str2)
     } else {
         for (; str[i] != '='; i++, j++);
         str += ++i;
+        if (my_strlen(str) == 0) exit(84);
         if (my_strlen(str) > 1) {
             tmp2[0] = (char) my_atoi(str);
             tmp2[1] = '\0';
