@@ -14,7 +14,8 @@ void init_tetris2(tetris_g_t *tetris_g, tetris_t *tetris_stats)
     tetris_stats->color, tetris_stats->total);
     tetris_g->actual_tetri = NULL;
     tetris_g->nb_tetri = tetris_stats->total;
-    tetris_g->interfaceleft = my_strtwa(get_lines("./interface/interface_1"), "\n");
+    tetris_g->interfaceleft =
+    my_strtwa(get_lines("./interface/interface_1"), "\n");
     tetris_g->grid = create_grid(37, 29);
     tetris_g->interfaceright = create_next_grid(10, 10);
     tetris_g->height = 0, tetris_g->width = 0, tetris_g->highscore = 0,
@@ -45,13 +46,10 @@ void init_tetris(tetris_t *tetris_stats)
     tetris_g_t tetris_g;
     init_tetris2(&tetris_g, tetris_stats);
     init_tetris3(&tetris_g, tetris_stats);
-    // return;
     WINDOW *tetris = initscr();
     create_highscore(&tetris_g);
-    keypad(tetris, TRUE);
-    nodelay(tetris, TRUE);
-    start_color();
-    noecho();
+    keypad(tetris, TRUE); nodelay(tetris, TRUE);
+    start_color(); noecho();
     init_pair(1, COLOR_BLACK, COLOR_WHITE);
     init_pair(2, COLOR_BLACK, COLOR_RED);
     init_pair(3, COLOR_BLACK, COLOR_BLUE);

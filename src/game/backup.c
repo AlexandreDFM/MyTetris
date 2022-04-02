@@ -25,7 +25,8 @@ void rotate_tetri2(WINDOW *tetris, tetris_g_t *tetris_g)
         }
     }
     tetris_g->actual_tetri->tetrimino =
-    create_tetri_coord(tetris_g->actual_tetri->tabpiece, tetris_g->actual_tetri->color);
+    create_tetri_coord(tetris_g->actual_tetri->tabpiece,
+    tetris_g->actual_tetri->color);
     tetris_g->xactual_tetri - size;
     free(tmp);
 }

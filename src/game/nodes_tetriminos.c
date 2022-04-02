@@ -57,13 +57,11 @@ coordtetri_t *create_tetri_coord(char **tetriminos, char color)
 char *create_matrice_piece(char *tetriminos, int *sizepiece)
 {
     int tmp = 0, width = 0, height = 1, size = 0;
-    if (tetriminos == NULL)
-        return NULL;
-    printf("LEN : %d\n", my_strlen(tetriminos));
-    for (int i = 0; tetriminos[i] != '\0' && my_strlen(tetriminos) > i && tetriminos[i] >= 32; i++) {
-        printf("%d\n", i);
+    for (int i = 0; tetriminos[i] != '\0' &&
+    my_strlen(tetriminos) > i && tetriminos[i] >= 32; i++) {
         tmp = i;
-        for (int j = 0; tetriminos[j] != '\n' && tetriminos[j] != '\0'; j++, tmp++);
+        for (int j = 0; tetriminos[j] != '\n' &&
+        tetriminos[j] != '\0'; j++, tmp++);
         if (tmp - i > width) width = tmp - i;
         i += tmp;
     }
@@ -86,8 +84,6 @@ tetriminos_t *create_node(char *tetriminos, char color)
     char *tmppiece = create_matrice_piece(tetriminos, &obj->sizepiece);
     char **tabpiece = create_char_tab(obj->sizepiece + 1, obj->sizepiece + 1);
     int counter = 0;
-    printf("TETRIMINOS : %s\n", tetriminos);
-    printf("TMP PIECE : %s\n", tmppiece);
     for (int y = 0; y < obj->sizepiece + 1; y++, counter++) {
         for (int x = 0; x < obj->sizepiece + 1 && tetriminos[counter] != '\n'
         && tetriminos[counter] != '\0'; x++, counter++) {
@@ -102,7 +98,6 @@ tetriminos_t *create_node(char *tetriminos, char color)
     obj->next = NULL;
     return obj;
 }
-
 
 tetriminos_t *create_list(char **tetriminos, char *color, int nbtetri)
 {

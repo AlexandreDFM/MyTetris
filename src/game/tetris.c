@@ -12,8 +12,10 @@ void print_tetriminos(WINDOW *tetris, tetris_g_t *tetris_g)
     coordtetri_t *actual = tetris_g->actual_tetri->tetrimino;
     while (actual != NULL) {
         attron(COLOR_PAIR((int) actual->symbol - 48));
-        mvwprintw(tetris, LINES / 2 - (tetris_g->height / 2) + tetris_g->yactual_tetri + actual->y,
-        COLS / 2 - tetris_g->width / 2 + (my_strlen(tetris_g->interfaceleft[0]))
+        mvwprintw(tetris, LINES / 2 - (tetris_g->height / 2)
+        + tetris_g->yactual_tetri + actual->y,
+        COLS / 2 - tetris_g->width / 2 +
+        (my_strlen(tetris_g->interfaceleft[0]))
         + tetris_g->xactual_tetri + actual->x, "%c", ' ');
         attroff(COLOR_PAIR((int) actual->symbol - 48));
         actual = actual->next;
@@ -89,7 +91,8 @@ void game(WINDOW *tetris, tetris_g_t *tetris_g)
             if (tetris_g->actual_tetri == NULL) pick_tetri(tetris, tetris_g);
             time_gestionnary(tetris_g);
             print_interfaces(tetris, tetris_g);
-            if (tetris_g->actual_tetri != NULL) print_tetriminos(tetris, tetris_g);
+            if (tetris_g->actual_tetri != NULL)
+                print_tetriminos(tetris, tetris_g);
             input = wgetch(tetris);
             if (tetris_g->actual_tetri != NULL &&
             inputs_manager(tetris, tetris_g, input) == 84) return;
