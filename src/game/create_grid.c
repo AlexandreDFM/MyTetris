@@ -22,6 +22,21 @@ char **fill_grid(char **grid, int width, int height)
     return grid;
 }
 
+char **create_char_tab(int x, int y)
+{
+    char **array = malloc(sizeof(char *) * (y + 1));
+    array[y] = NULL;
+    for (int i = 0; i < y; i++) {
+        array[i] = malloc(sizeof(char) * (x + 1));
+        for (int j = 0; j < x; j++)
+            array[i][j] = '*';
+        array[i][x] = '\0';
+    }
+    for (int i = 0; i < y; i++)
+        my_memset(array[i], 32, x);
+    return array;
+}
+
 char **create_grid(int width, int height)
 {
     char **grid = malloc(sizeof(char *) * (height + 1));

@@ -18,8 +18,12 @@ SRC    = main.c								\
 		src/print_debug.c					\
 		src/game/tetris.c					\
 		src/game/create_grid.c				\
+		src/game/grid_manager.c				\
 		src/game/nodes_tetriminos.c			\
 		src/game/mouvement.c				\
+		src/game/highscore.c				\
+		src/game/my_color_print.c			\
+		src/game/init_tetris_game.c			\
 		src/utils/my_read.c					\
 		src/utils/my_memset.c 				\
 		src/utils/my_strcpy.c				\

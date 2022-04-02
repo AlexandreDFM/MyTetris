@@ -40,7 +40,7 @@ void check_flags(int ac, char **av, char **s_flags, char **l_flags)
     }
 }
 
-void main(int ac, char **av)
+int main(int ac, char **av)
 {
     srand(time(0));
     int key = 0;

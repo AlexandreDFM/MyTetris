@@ -22,8 +22,6 @@
 #include <grp.h>
 #include <time.h>
 
-// #define DT_REG 8
-
 typedef struct tetris {
     char **tetriminos;
     char *color;
@@ -96,3 +94,22 @@ char **create_next_grid(int width, int height);
 char **fill_next_grid(char **grid, int width, int height);
 char **create_grid(int width, int height);
 char **fill_grid(char **grid, int width, int height);
+
+void init_tetris(tetris_t *tetris_stats);
+void help(void);
+void grid_check_full(tetris_g_t *tetris_g, int y);
+void grid_check_lines(tetris_g_t *tetris_g);
+char **my_strtwa(char const *str, char *limit);
+char **create_char_tab(int x, int y);
+tetriminos_t *create_list(char **tetriminos, char *color, int nbtetri);
+coordtetri_t *create_tetri_coord(char **tetriminos, char color);
+void rotate_tetri(WINDOW *tetris, tetris_g_t *tetris_g);
+int inputs_manager(WINDOW *tetris, tetris_g_t *tetris_g, int input);
+tetriminos_t *create_node(char *tetriminos, char color);
+void check_set_piece(WINDOW *tetris, tetris_g_t *tetris_g);
+void create_highscore(tetris_g_t *tetris_g);
+void open_write(tetris_g_t *tetris_g);
+void check_highscore(tetris_g_t *tetris_g);
+void display_highscore(WINDOW *tetris, tetris_g_t *tetris_g);
+void game(WINDOW *tetris, tetris_g_t *tetris_g);
+void print_interfaces(WINDOW *tetris, tetris_g_t *tetris_g);
