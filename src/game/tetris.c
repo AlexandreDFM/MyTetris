@@ -78,8 +78,7 @@ void check_new_piece(WINDOW *tetris, tetris_g_t *tetris_g)
 
 void game(WINDOW *tetris, tetris_g_t *tetris_g)
 {
-    int input = 0;
-    tetris_g->begin = clock();
+    int input = 0; tetris_g->begin = clock();
     while (1) {
         if (LINES < tetris_g->height || COLS < tetris_g->width) {
             clear();
