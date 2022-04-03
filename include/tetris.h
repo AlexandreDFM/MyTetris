@@ -129,3 +129,4 @@ void print_tetriminos(WINDOW *tetris, tetris_g_t *tetris_g);
 void my_free_coordtetrimino(coordtetri_t *tetrimino);
 int check_lose(tetris_g_t *tetris_g);
 void my_print_next(WINDOW *tetris, tetris_g_t *tetris_g);
+void print_scores2(WINDOW *tetris, tetris_g_t *tetris_g);

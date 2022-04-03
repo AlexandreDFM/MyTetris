@@ -35,3 +35,16 @@ void my_print_next(WINDOW *tetris, tetris_g_t *tetris_g)
         attroff(COLOR_PAIR((int) tmp->symbol - 48));
     }
 }
+
+void print_scores2(WINDOW *tetris, tetris_g_t *tetris_g)
+{
+    if (tetris_g->timersecondes < 10) {
+        mvwprintw(tetris, LINES / 2 - tetris_g->height / 2 + 19,
+        COLS / 2 - tetris_g->width / 2 + 20, "0");
+        mvwprintw(tetris, LINES / 2 - tetris_g->height / 2 + 19,
+        COLS / 2 - tetris_g->width / 2 + 21, "%d", tetris_g->timersecondes);
+    } else {
+        mvwprintw(tetris, LINES / 2 - tetris_g->height / 2 + 19,
+        COLS / 2 - tetris_g->width / 2 + 20, "%ld", tetris_g->timersecondes);
+    }
+}
