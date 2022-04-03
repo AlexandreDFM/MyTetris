@@ -29,7 +29,7 @@ char **create_char_tab(int x, int y)
     for (int i = 0; i < y; i++) {
         array[i] = malloc(sizeof(char) * (x + 1));
         for (int j = 0; j < x; j++)
-            array[i][j] = '*';
+            array[i][j] = ' ';
         array[i][x] = '\0';
     }
     for (int i = 0; i < y; i++)

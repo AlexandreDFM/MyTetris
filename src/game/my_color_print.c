@@ -94,22 +94,20 @@ void print_scores(WINDOW *tetris, tetris_g_t *tetris_g)
 void print_interfaces(WINDOW *tetris, tetris_g_t *tetris_g)
 {
     for (int y = 0; tetris_g->interfaceleft[y] != NULL; y++) {
-        for (int x = 0; tetris_g->interfaceleft[y][x] != '\0'; x++) {
+        for (int x = 0; tetris_g->interfaceleft[y][x] != '\0'; x++)
             color_printingleft(tetris, tetris_g, y, x);
-        }
         printw("\n");
     }
     for (int y = 0; tetris_g->grid[y] != NULL; y++) {
-        for (int x = 0; tetris_g->grid[y][x] != '\0'; x++) {
+        for (int x = 0; tetris_g->grid[y][x] != '\0'; x++)
             color_printinggrid(tetris, tetris_g, y, x);
-        }
         printw("\n");
     }
     for (int y = 0; tetris_g->interfaceright[y] != NULL; y++) {
-        for (int x = 0; tetris_g->interfaceright[y][x] != '\0'; x++) {
+        for (int x = 0; tetris_g->interfaceright[y][x] != '\0'; x++)
             color_printingright(tetris, tetris_g, y, x);
-        }
         printw("\n");
     }
+    if (tetris_g->next_tetri != NULL) my_print_next(tetris, tetris_g);
     print_scores(tetris, tetris_g);
 }

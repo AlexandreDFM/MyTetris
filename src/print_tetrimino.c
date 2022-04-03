@@ -40,15 +40,13 @@ int print2(struct dirent *entry, char *name, tetris_t *tetris_s, char *tetris)
     if (my_strncmp(my_revstr(entry->d_name), "onimirtet.", 11) != 0 ||
     check_valid(tetris) == -1) {
         tetris_s->total -= 1;
-        if (tetris_s->debug == 1)
-            my_printf("Tetriminos '%s': error\n", name);
+        if (tetris_s->debug == 1) my_printf("Tetriminos '%s': error\n", name);
     } else {
         if (tetris_s->debug == 1)
             my_printf("Tetriminos '%s': size %c*%c, color %c", name, tetris[0],
             tetris[2], tetris[4]);
         tetris_s->color[tetris_s->t_nb] = tetris[4];
-        tetris += 5;
-        trim_spaces(tetris);
+        tetris += 5; trim_spaces(tetris);
         tetris_s->tetriminos[tetris_s->t_nb] = my_strdup(tetris);
         if (tetris_s->debug == 1)
             my_printf("%s", tetris_s->tetriminos[tetris_s->t_nb]);

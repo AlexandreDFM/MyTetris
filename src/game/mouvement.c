@@ -7,17 +7,40 @@
 
 #include "tetris.h"
 
+int x_check_right(WINDOW * tetris, tetris_g_t *tetris_g)
+{
+    coordtetri_t *tmp = tetris_g->actual_tetri->tetrimino;
+    for (; tmp != NULL; tmp = tmp->next) {
+        if (tetris_g->grid[tetris_g->yactual_tetri +
+        tmp->y][tetris_g->xactual_tetri + tmp->x + 1] != ' ') {
+            return 0;
+        }
+    }
+    return 1;
+}
+
+int x_check_left(WINDOW * tetris, tetris_g_t *tetris_g)
+{
+    coordtetri_t *tmp = tetris_g->actual_tetri->tetrimino;
+    for (; tmp != NULL; tmp = tmp->next) {
+        if (tetris_g->grid[tetris_g->yactual_tetri +
+        tmp->y][tetris_g->xactual_tetri + tmp->x - 1] != ' ') {
+            return 0;
+        }
+    }
+    return 1;
+}
+
 int inputs_manager(WINDOW *tetris, tetris_g_t *tetris_g, int input)
 {
-    if (input == 27) return 84;
-    if (input == KEY_UP && tetris_g->xactual_tetri > 1)
+    if (input == tetris_g->key_q) return 84;
+    if (input == tetris_g->key_t && x_check_right(tetris, tetris_g))
         rotate_tetri(tetris, tetris_g);
-    if (input == KEY_DOWN && tetris_g->yactual_tetri < tetris_g->height)
+    if (input == tetris_g->key_d && tetris_g->yactual_tetri < tetris_g->height)
         tetris_g->yactual_tetri += 1;
-    if (input == KEY_LEFT && tetris_g->xactual_tetri > 1)
+    if (input == tetris_g->key_l && x_check_left(tetris, tetris_g))
         tetris_g->xactual_tetri -= 1;
-    if (input == KEY_RIGHT && tetris_g->xactual_tetri
-    < my_strlen(tetris_g->grid[0]) - tetris_g->actual_tetri->sizepiece)
+    if (input == tetris_g->key_r && x_check_right(tetris, tetris_g))
         tetris_g->xactual_tetri += 1;
     return 1;
 }

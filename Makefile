@@ -20,10 +20,15 @@ SRC    = main.c								\
 		src/game/create_grid.c				\
 		src/game/grid_manager.c				\
 		src/game/nodes_tetriminos.c			\
+		src/game/check_lose.c				\
 		src/game/mouvement.c				\
 		src/game/highscore.c				\
 		src/game/my_color_print.c			\
 		src/game/init_tetris_game.c			\
+		src/game/link_nodes.c				\
+		src/game/my_free_tetrimino.c		\
+		src/game/my_get_size_tetri.c		\
+		src/game/my_print_tetriminos.c		\
 		src/utils/my_read.c					\
 		src/utils/my_memset.c 				\
 		src/utils/my_strcpy.c				\

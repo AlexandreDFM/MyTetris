@@ -61,8 +61,15 @@ typedef struct tetriminos {
 }tetriminos_t;
 
 typedef struct tetris_g {
+    int key_l;
+    int key_r;
+    int key_t;
+    int key_d;
+    int key_q;
+    int key_p;
     int width;
     int height;
+    int speed;
     int highscore;
     int score;
     int lines;
@@ -72,6 +79,8 @@ typedef struct tetris_g {
     int nb_tetri;
     int xactual_tetri;
     int yactual_tetri;
+    int xnext_tetri;
+    int ynext_tetri;
     char **interfaceleft;
     char **grid;
     char **interfaceright;
@@ -79,6 +88,7 @@ typedef struct tetris_g {
     clock_t end;
     tetriminos_t *tetriminos;
     tetriminos_t *actual_tetri;
+    tetriminos_t *next_tetri;
 }tetris_g_t;
 
 char *my_itoa(int num);
@@ -113,3 +123,9 @@ void check_highscore(tetris_g_t *tetris_g);
 void display_highscore(WINDOW *tetris, tetris_g_t *tetris_g);
 void game(WINDOW *tetris, tetris_g_t *tetris_g);
 void print_interfaces(WINDOW *tetris, tetris_g_t *tetris_g);
+void link_nodes(tetriminos_t *link1, tetriminos_t *link2);
+void link_nodes_coord(coordtetri_t *link1, coordtetri_t *link2);
+void print_tetriminos(WINDOW *tetris, tetris_g_t *tetris_g);
+void my_free_coordtetrimino(coordtetri_t *tetrimino);
+int check_lose(tetris_g_t *tetris_g);
+void my_print_next(WINDOW *tetris, tetris_g_t *tetris_g);

@@ -7,19 +7,35 @@
 
 #include "tetris.h"
 
+int get_bigger_size_tetri(tetris_g_t *tetris_g)
+{
+    tetriminos_t *tmp = tetris_g->tetriminos;
+    int max_size = 0;
+    for (; tmp != NULL; tmp = tmp->next) {
+        if (tmp->sizepiece > max_size)
+            max_size = tmp->sizepiece;
+    }
+    return max_size;
+}
+
 void init_tetris2(tetris_g_t *tetris_g, tetris_t *tetris_stats)
 {
     tetris_g->level = tetris_stats->level <= 1 ? 1 : tetris_stats->level;
     tetris_g->tetriminos = create_list(tetris_stats->tetriminos,
     tetris_stats->color, tetris_stats->total);
     tetris_g->actual_tetri = NULL;
+    tetris_g->next_tetri = NULL;
     tetris_g->nb_tetri = tetris_stats->total;
     tetris_g->interfaceleft =
     my_strtwa(get_lines("./interface/interface_1"), "\n");
-    tetris_g->grid = create_grid(37, 29);
-    tetris_g->interfaceright = create_next_grid(10, 10);
+    tetris_g->grid = create_grid(my_atoi(tetris_stats->col) + 2,
+    my_atoi(tetris_stats->row) + 2);
+    int i = get_bigger_size_tetri(tetris_g);
+    tetris_g->xnext_tetri = 3 + my_strlen(tetris_g->grid[0]);
+    tetris_g->ynext_tetri = 2;
+    tetris_g->interfaceright = create_next_grid(i + 5, i + 4);
     tetris_g->height = 0, tetris_g->width = 0, tetris_g->highscore = 0,
-    tetris_g->score = 0, tetris_g->lines = 0,
+    tetris_g->score = 0, tetris_g->lines = 0, tetris_g->speed = 1,
     tetris_g->timermins = 0, tetris_g->timersecondes = 0;
 }
 
@@ -41,11 +57,22 @@ void init_tetris3(tetris_g_t *tetris_g, tetris_t *tetris_stats)
     tetris_g->width += my_strlen(tetris_g->interfaceright[0]);
 }
 
+void init_tetris4(tetris_g_t *tetris_g, tetris_t *tetris_stats)
+{
+    tetris_g->key_l = tetris_stats->key_nb[0];
+    tetris_g->key_r = tetris_stats->key_nb[1];
+    tetris_g->key_t = tetris_stats->key_nb[2];
+    tetris_g->key_d = tetris_stats->key_nb[3];
+    tetris_g->key_q = my_atoi(tetris_stats->key_q);
+    tetris_g->key_p = my_atoi(tetris_stats->key_p);
+}
+
 void init_tetris(tetris_t *tetris_stats)
 {
     tetris_g_t tetris_g;
     init_tetris2(&tetris_g, tetris_stats);
     init_tetris3(&tetris_g, tetris_stats);
+    init_tetris4(&tetris_g, tetris_stats);
     WINDOW *tetris = initscr();
     create_highscore(&tetris_g);
     keypad(tetris, TRUE); nodelay(tetris, TRUE);
