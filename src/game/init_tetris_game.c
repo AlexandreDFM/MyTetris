@@ -59,12 +59,12 @@ void init_tetris3(tetris_g_t *tetris_g, tetris_t *tetris_stats)
 
 void init_tetris4(tetris_g_t *tetris_g, tetris_t *tetris_stats)
 {
-    tetris_g->key_l = tetris_stats->key_nb[0];
-    tetris_g->key_r = tetris_stats->key_nb[1];
-    tetris_g->key_t = tetris_stats->key_nb[2];
-    tetris_g->key_d = tetris_stats->key_nb[3];
-    tetris_g->key_q = my_atoi(tetris_stats->key_q);
-    tetris_g->key_p = my_atoi(tetris_stats->key_p);
+    tetris_g->key_l = get_key(tetris_stats->key_l, tetris_stats);
+    tetris_g->key_r = get_key(tetris_stats->key_r, tetris_stats);
+    tetris_g->key_t = get_key(tetris_stats->key_t, tetris_stats);
+    tetris_g->key_d = get_key(tetris_stats->key_d, tetris_stats);
+    tetris_g->key_q = get_key(tetris_stats->key_q, tetris_stats);
+    tetris_g->key_p = get_key(tetris_stats->key_p, tetris_stats);
 }
 
 void init_tetris(tetris_t *tetris_stats)
