@@ -83,19 +83,18 @@ void game(WINDOW *tetris, tetris_g_t *tetris_g)
         if (LINES < tetris_g->height || COLS < tetris_g->width) {
             clear();
             mvwprintw(stdscr, LINES / 2, COLS / 2 - 10, "Wrong terminal size");
-            refresh();
-        } else {
-            check_new_piece(tetris, tetris_g);
-            time_gestionnary(tetris_g);
-            print_interfaces(tetris, tetris_g);
-            if (tetris_g->actual_tetri != NULL)
-                print_tetriminos(tetris, tetris_g);
-            input = wgetch(tetris);
-            if (tetris_g->actual_tetri != NULL &&
-            inputs_manager(tetris, tetris_g, input) == 84) return;
-            grid_check_lines(tetris_g);
-            check_set_piece(tetris, tetris_g);
-            if (check_lose(tetris_g) == 84) return;
+            refresh(); continue;
         }
+        check_new_piece(tetris, tetris_g);
+        time_gestionnary(tetris_g);
+        print_interfaces(tetris, tetris_g);
+        if (tetris_g->actual_tetri != NULL)
+            print_tetriminos(tetris, tetris_g);
+        input = wgetch(tetris);
+        if (tetris_g->actual_tetri != NULL &&
+        inputs_manager(tetris, tetris_g, input) == 84) return;
+        grid_check_lines(tetris_g);
+        check_set_piece(tetris, tetris_g);
+        if (check_lose(tetris_g) == 84) return;
     }
 }

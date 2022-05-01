@@ -7,6 +7,16 @@
 
 #include "tetris.h"
 
+void function_tetri(char replace, int j, int counter, tetris_g_t *tetris_g)
+{
+    int size = tetris_g->actual_tetri->sizepiece;
+    if (replace == '\n') {
+        tetris_g->actual_tetri->piece[size * counter] = '\n';
+    } else {
+        tetris_g->actual_tetri->piece[size - (j + 1)] = replace;
+    }
+}
+
 void rotate_tetri2(WINDOW *tetris, tetris_g_t *tetris_g)
 {
     int backspacecounter = 0, size = tetris_g->actual_tetri->sizepiece;
@@ -16,12 +26,7 @@ void rotate_tetri2(WINDOW *tetris, tetris_g_t *tetris_g)
         for (int j = 0; j < size - 1; j++) {
             replace = tmp[j];
             tetris_g->actual_tetri->piece[j] = ' ';
-            if (replace == '\n') {
-                tetris_g->actual_tetri->piece[size * backspacecounter] = '\n';
-                continue;
-            } else {
-                tetris_g->actual_tetri->piece[size - (j + 1)] = replace;
-            }
+            function_tetri(replace, j, backspacecounter, tetris_g);
         }
     }
     tetris_g->actual_tetri->tetrimino =

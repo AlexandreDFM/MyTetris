@@ -31,11 +31,10 @@ coordtetri_t *create_tetri_coord(char **tetriminos, char color)
                 break;
             } else if (tetriminos[y][x] == ' ') {
                 continue;
-            } else {
-                actual = create_node_coord(color, x, y);
-                link_nodes_coord(tmp, actual);
-                tmp = actual;
             }
+            actual = create_node_coord(color, x, y);
+            link_nodes_coord(tmp, actual);
+            tmp = actual;
         }
         x = 0;
     }

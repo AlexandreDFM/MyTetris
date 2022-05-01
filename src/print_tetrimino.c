@@ -19,10 +19,8 @@ char *trim_spaces(char *tetris)
 {
     int i = 0;
     for (; tetris[i] != '\0'; i++) {
-        if (tetris[i] == ' ' && tetris[i + 1] == '\n') {
-            for (int j = i; tetris[j + 1] != '\0'; j++)
-               tetris[j] = tetris[j + 1];
-        }
+        if (tetris[i] != ' ' && tetris[i + 1] != '\n') continue;
+        for (int j = i; tetris[j + 1] != '\0'; j++) tetris[j] = tetris[j + 1];
     }
     tetris[i] = '\0';
     for (int j = i; j != 0; j--) {

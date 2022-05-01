@@ -17,19 +17,17 @@ char *retrieve_int(char *str, char *str2)
             tmp2[0] = (char) my_atoi(str2);
             tmp2[1] = '\0';
             return tmp2;
-        } else return str2;
+        }
+        return str2;
     } else {
         for (; str[i] != '='; i++, j++);
         str += ++i;
         if (my_strlen(str) == 0) exit(84);
         if (my_strlen(str) > 1) {
-            tmp2[0] = (char) my_atoi(str);
-            tmp2[1] = '\0';
-            return tmp2;
-        } else
-            tmp = malloc(sizeof(char) * my_strlen(str));
-            tmp = my_strncpy(tmp, str, my_strlen(str));
-            return tmp;
+            tmp2[0] = (char) my_atoi(str); tmp2[1] = '\0'; return tmp2;
+        }
+        tmp = malloc(sizeof(char) * my_strlen(str));
+        tmp = my_strncpy(tmp, str, my_strlen(str)); return tmp;
     }
 }
 
